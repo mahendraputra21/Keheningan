@@ -40,6 +40,7 @@ class AmbienceManager {
   private muted = false;
   private unlocked = false;
   private initialized = false;
+  private unlockHandler: (() => void) | null = null;
   private fadeRaf: number | null = null;
   private birdTimer: number | null = null;
   private birdEl: HTMLAudioElement | null = null;
@@ -98,10 +99,12 @@ class AmbienceManager {
       }
     } catch {}
 
-    // unlock on first gesture
+    // unlock on first gesture — pointerdown preferred (mobile), fallback to click/touch/keydown
     const unlock = () => this.unlock();
+    this.unlockHandler = unlock;
+    window.addEventListener("pointerdown", unlock, { once: true });
     window.addEventListener("click", unlock, { once: true });
-    window.addEventListener("touchstart", unlock, { once: true });
+    window.addEventListener("touchstart", unlock, { once: true } as AddEventListenerOptions);
     window.addEventListener("keydown", unlock, { once: true });
     // also listen for visibility
     document.addEventListener("visibilitychange", () => {
@@ -133,16 +136,40 @@ class AmbienceManager {
 
   private async unlock() {
     if (this.unlocked) return;
+    // cleanup listeners — unlock happens only once
+    const h = this.unlockHandler;
+    if (h) {
+      try {
+        window.removeEventListener("pointerdown", h as EventListener);
+        window.removeEventListener("click", h as EventListener);
+        window.removeEventListener("touchstart", h as EventListener);
+        window.removeEventListener("keydown", h as EventListener);
+      } catch {}
+      this.unlockHandler = null;
+    }
     this.unlocked = true;
     try { if (this.ctx && this.ctx.state === "suspended") await this.ctx.resume(); } catch {}
-    // start loops muted then fade to current scene
-    for (const el of this.els.values()) {
-      try {
-        // must play after gesture; catch autoplay rejection
-        const p = el.play();
-        if (p && typeof (p as Promise<void>).catch === "function") (p as Promise<void>).catch(() => {});
-      } catch {}
+    // ensure current scene's target loops are playing (silent before), retry silently on reject
+    const targetsForScene = this.scene === "village" && this.riverMix > 0
+      ? (() => {
+          const v = SCENE_TARGETS.village;
+          const r = SCENE_TARGETS.river;
+          const t = this.riverMix;
+          return { forest: v.forest * (1 - t) + r.forest * t, daytime: v.daytime * (1 - t) + r.daytime * t, river: v.river * (1 - t) + r.river * t, bamboo: 0 } as Targets;
+        })()
+      : SCENE_TARGETS[this.scene];
+    for (const k of Object.keys(targetsForScene) as (keyof Targets)[]) {
+      if (targetsForScene[k] > 0.001) {
+        const el = this.els.get(k);
+        if (el) {
+          try {
+            const p = el.play();
+            if (p && typeof (p as Promise<void>).catch === "function") (p as Promise<void>).catch(() => {});
+          } catch {}
+        }
+      }
     }
+    // also start any loop that will be needed for fades (all targeted loops already started above; others stay paused)
     if (this.muted) {
       this.setVolumesImmediate({ forest:0, daytime:0, river:0, bamboo:0 });
     } else {
