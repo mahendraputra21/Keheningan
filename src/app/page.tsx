@@ -156,7 +156,7 @@ export default function LandingPage() {
               <div className="absolute inset-0 bg-gradient-to-b from-surface/70 via-surface/40 to-surface" />
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-surface/30 to-surface/90" />
             </div>
-            <div className="relative z-10 pt-36 lg:pt-44 flex flex-col items-center max-w-4xl px-margin-mobile lg:px-margin mx-auto">
+            <div className="relative z-10 w-full max-w-4xl box-border px-margin-mobile lg:px-margin mx-auto pt-36 lg:pt-44 flex flex-col items-center">
               <div className="relative mb-6 group cursor-default">
                 <div className="w-24 h-24 sm:w-28 sm:h-28 relative flex items-center justify-center transition-transform duration-1000 ease-out hover:scale-105">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -167,34 +167,34 @@ export default function LandingPage() {
                   />
                 </div>
               </div>
-              <div className="flex items-center gap-space-sm mb-3">
+              <div className="flex items-center gap-space-sm mb-3 max-w-full flex-wrap justify-center box-border">
                 <span className="w-6 h-[1px] bg-outline-variant" />
-                <span className="font-label-sm text-label-sm tracking-[0.24em] text-on-surface-variant uppercase">{t("landing.eyebrow")}</span>
+                <span className="font-label-sm text-label-sm tracking-[0.24em] text-on-surface-variant uppercase text-center break-words">{t("landing.eyebrow")}</span>
                 <span className="w-6 h-[1px] bg-outline-variant" />
               </div>
-              <h1 className="font-headline-xl text-headline-xl text-primary tracking-[0.14em] font-normal mb-1">KEHENINGAN</h1>
-              <p className="font-headline-sm text-headline-sm text-on-surface-variant tracking-[0.22em] font-light mb-6">円 相</p>
-              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto italic mb-10 leading-relaxed font-light">
+              <h1 className="font-headline-xl-mobile text-headline-xl-mobile sm:font-headline-xl sm:text-headline-xl text-primary tracking-[0.03em] sm:tracking-[0.14em] font-normal mb-1 w-full max-w-full box-border break-words px-2 sm:px-0 text-center">KEHENINGAN</h1>
+              <p className="font-headline-sm text-headline-sm text-on-surface-variant tracking-[0.22em] font-light mb-6 w-full max-w-full box-border break-words px-2 sm:px-0 text-center">円 相</p>
+              <p className="font-body-lg text-body-lg text-on-surface-variant w-full max-w-xl box-border mx-auto italic mb-10 leading-relaxed font-light break-words px-2 sm:px-0 text-center">
                 {t("landing.heroQuote")}
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-space-md w-full">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-space-md w-full max-w-xl mx-auto box-border px-2 sm:px-0">
                 <a
-                  className="w-full sm:w-auto px-8 py-3.5 rounded bg-primary text-on-primary font-label-md text-label-md tracking-[0.18em] uppercase transition-all duration-500 hover:bg-primary-container hover:-translate-y-0.5 shadow-[0_12px_32px_-8px_rgba(36,35,33,0.18)] flex items-center justify-center gap-space-xs"
+                  className="w-full sm:w-auto min-h-[48px] min-w-0 box-border px-8 py-3.5 rounded bg-primary text-on-primary font-label-md text-label-md tracking-[0.18em] uppercase transition-all duration-500 hover:bg-primary-container hover:-translate-y-0.5 shadow-[0_12px_32px_-8px_rgba(36,35,33,0.18)] flex items-center justify-center gap-space-xs"
                   href="#dunia"
                 >
                   <span>{t("landing.ctaStart")}</span>
                   <span className="material-symbols-outlined text-[16px]">east</span>
                 </a>
                 <a
-                  className="w-full sm:w-auto px-8 py-3.5 rounded bg-surface/70 backdrop-blur-sm text-on-surface font-label-md text-label-md tracking-[0.18em] uppercase transition-all duration-500 hover:bg-surface-container-high hover:text-primary"
+                  className="w-full sm:w-auto min-h-[48px] min-w-0 box-border px-8 py-3.5 rounded bg-surface/70 backdrop-blur-sm text-on-surface font-label-md text-label-md tracking-[0.18em] uppercase transition-all duration-500 hover:bg-surface-container-high hover:text-primary flex items-center justify-center text-center"
                   href="#dunia"
                 >{t("landing.ctaSeeWorld")}</a>
               </div>
             </div>
-            <div className="relative z-10 pb-10 flex flex-col items-center">
+            <div className="relative z-10 pb-10 flex flex-col items-center w-full max-w-full box-border px-4">
               <button
                 onClick={() => ambience.toggleMuted()}
-                className="inline-flex items-center gap-space-xs px-4 py-2 rounded-full bg-surface-container/70 backdrop-blur-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-300 cursor-pointer text-center"
+                className="inline-flex flex-wrap justify-center items-center max-w-[calc(100vw-2rem)] box-border gap-space-xs px-4 py-2 rounded-full bg-surface-container/70 backdrop-blur-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-300 cursor-pointer text-center"
                 type="button"
                 aria-label={t("landing.soundBadgeAria")}
               >
