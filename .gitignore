@@ -1,0 +1,32 @@
+# Build
+.next/
+out/
+dist/
+
+# Deps
+node_modules/
+
+# IDE
+.vs/
+.idea/
+*.user
+*.suo
+.vscode/settings.json
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temp
+.stitch_inspect/
