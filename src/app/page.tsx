@@ -108,10 +108,10 @@ export default function LandingPage() {
   }, [modalOpen]);
 
   return (
-    <div className="bg-surface text-on-surface font-body-md text-body-md antialiased w-full max-w-full overflow-x-hidden box-border">
+    <div className="bg-surface text-on-surface font-body-md text-body-md antialiased">
       {/* Header — Stitch exact */}
-      <header className="fixed top-0 left-0 right-0 w-full max-w-full z-50 bg-surface/85 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.02)] box-border overflow-hidden">
-        <div className="h-16 sm:h-20 w-full max-w-full px-margin-mobile lg:px-margin flex items-center justify-between gap-2 sm:gap-space-md box-border overflow-hidden min-w-0">
+      <header className="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.02)]">
+        <div className="h-20 w-full px-margin-mobile lg:px-margin flex items-center justify-between">
           <div className="flex items-center gap-space-sm">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img alt="Keheningan" className="h-8 w-auto object-contain" src="/landing/enso.png" />
@@ -124,7 +124,7 @@ export default function LandingPage() {
             <a className="text-on-surface-variant hover:text-on-surface font-label-md text-label-md tracking-widest uppercase transition-colors duration-300 px-2 py-1" href="#perjalanan">{t("landing.navPerjalanan")}</a>
             <a className="text-on-surface-variant hover:text-on-surface font-label-md text-label-md tracking-widest uppercase transition-colors duration-300 px-2 py-1" href="#filosofi">{t("landing.navFilosofi")}</a>
           </nav>
-          <div className="flex items-center gap-2 sm:gap-space-md shrink-0">
+          <div className="flex items-center gap-space-md">
             <button
               aria-label={t("landing.soundToggleAria")}
               onClick={() => ambience.toggleMuted()}
@@ -142,10 +142,10 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <main className="w-full max-w-full pt-16 sm:pt-20 bg-surface overflow-x-hidden box-border">
-        <div className="flex flex-col w-full max-w-full selection:bg-secondary-fixed selection:text-on-secondary-fixed overflow-x-hidden box-border">
+      <main className="w-full pt-20 bg-surface">
+        <div className="flex flex-col w-full selection:bg-secondary-fixed selection:text-on-secondary-fixed">
           {/* SECTION 1: HERO */}
-          <section className="relative w-full max-w-full -mt-16 sm:-mt-20 min-h-[92vh] flex flex-col items-center justify-between text-center overflow-hidden box-border">
+          <section className="relative w-full -mt-20 min-h-[92vh] flex flex-col items-center justify-between text-center overflow-hidden">
             <div className="absolute inset-0 z-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -156,7 +156,7 @@ export default function LandingPage() {
               <div className="absolute inset-0 bg-gradient-to-b from-surface/70 via-surface/40 to-surface" />
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-surface/30 to-surface/90" />
             </div>
-            <div className="relative z-10 w-full max-w-4xl px-6 sm:px-margin-mobile lg:px-margin mx-auto pt-28 sm:pt-36 lg:pt-44 flex flex-col items-center box-border">
+            <div className="relative z-10 pt-36 lg:pt-44 flex flex-col items-center max-w-4xl px-margin-mobile lg:px-margin mx-auto">
               <div className="relative mb-6 group cursor-default">
                 <div className="w-24 h-24 sm:w-28 sm:h-28 relative flex items-center justify-center transition-transform duration-1000 ease-out hover:scale-105">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -172,29 +172,29 @@ export default function LandingPage() {
                 <span className="font-label-sm text-label-sm tracking-[0.24em] text-on-surface-variant uppercase">{t("landing.eyebrow")}</span>
                 <span className="w-6 h-[1px] bg-outline-variant" />
               </div>
-              <h1 className="font-headline-xl text-headline-xl text-primary tracking-[0.08em] sm:tracking-[0.14em] font-normal mb-1 w-full max-w-full break-words px-2 sm:px-0">KEHENINGAN</h1>
+              <h1 className="font-headline-xl text-headline-xl text-primary tracking-[0.14em] font-normal mb-1">KEHENINGAN</h1>
               <p className="font-headline-sm text-headline-sm text-on-surface-variant tracking-[0.22em] font-light mb-6">円 相</p>
-              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl w-full mx-auto italic mb-10 leading-relaxed font-light break-words px-2 sm:px-0">
+              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto italic mb-10 leading-relaxed font-light">
                 {t("landing.heroQuote")}
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-space-md w-full max-w-xl mx-auto px-2 sm:px-0 box-border">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-space-md w-full">
                 <a
-                  className="w-full sm:w-auto min-h-[48px] px-8 py-3.5 rounded bg-primary text-on-primary font-label-md text-label-md tracking-[0.18em] uppercase transition-all duration-500 hover:bg-primary-container hover:-translate-y-0.5 shadow-[0_12px_32px_-8px_rgba(36,35,33,0.18)] flex items-center justify-center gap-space-xs box-border"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded bg-primary text-on-primary font-label-md text-label-md tracking-[0.18em] uppercase transition-all duration-500 hover:bg-primary-container hover:-translate-y-0.5 shadow-[0_12px_32px_-8px_rgba(36,35,33,0.18)] flex items-center justify-center gap-space-xs"
                   href="#dunia"
                 >
                   <span>{t("landing.ctaStart")}</span>
                   <span className="material-symbols-outlined text-[16px]">east</span>
                 </a>
                 <a
-                  className="w-full sm:w-auto min-h-[48px] px-8 py-3.5 rounded bg-surface/70 backdrop-blur-sm text-on-surface font-label-md text-label-md tracking-[0.18em] uppercase transition-all duration-500 hover:bg-surface-container-high hover:text-primary box-border"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded bg-surface/70 backdrop-blur-sm text-on-surface font-label-md text-label-md tracking-[0.18em] uppercase transition-all duration-500 hover:bg-surface-container-high hover:text-primary"
                   href="#dunia"
                 >{t("landing.ctaSeeWorld")}</a>
               </div>
             </div>
-            <div className="relative z-10 w-full max-w-full pb-10 flex flex-col items-center px-4 box-border overflow-hidden">
+            <div className="relative z-10 pb-10 flex flex-col items-center">
               <button
                 onClick={() => ambience.toggleMuted()}
-                className="inline-flex max-w-full items-center justify-center gap-space-xs px-4 py-2 rounded-full bg-surface-container/70 backdrop-blur-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-300 cursor-pointer text-center box-border flex-wrap"
+                className="inline-flex items-center gap-space-xs px-4 py-2 rounded-full bg-surface-container/70 backdrop-blur-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-300 cursor-pointer text-center"
                 type="button"
                 aria-label={t("landing.soundBadgeAria")}
               >
